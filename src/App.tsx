@@ -1,25 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import AppNavigator from "./navigation/router-config";
+import ReduxProvider from "./services/context";
+import { Toaster } from "react-hot-toast";
+
+const toasterOptions = {
+  className: "",
+  style: {
+    margin: "40px",
+    background: "#1A202C",
+    color: "#fff",
+    zIndex: 1,
+  },
+  duration: 3000,
+  success: {
+    duration: 3000,
+    theme: {
+      primary: "green",
+      secondary: "black",
+    },
+  },
+  error: {
+    style: {
+      background: "#f44336",
+    },
+    duration: 3000,
+  },
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Toaster
+        position={"top-center"}
+        reverseOrder={false}
+        toastOptions={toasterOptions}
+      />
+      <ReduxProvider>
+        <AppNavigator />
+      </ReduxProvider>
+    </React.Fragment>
   );
 }
 
