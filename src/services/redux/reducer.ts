@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { UsersData } from "../../data/users";
+import { UserToEditProp } from "./types";
 
-const userToDelete: any = {};
+const userToEdit: UserToEditProp = {};
 
 export const userSlice = createSlice({
   name: "users",
-  initialState: { value: UsersData, selectedValue: userToDelete },
+  initialState: { value: UsersData, selectedValue: userToEdit },
   reducers: {
     addUser: (state, action) => {
       state.value.push(action.payload);
@@ -24,6 +25,8 @@ export const userSlice = createSlice({
         if (user.id === action.payload.id) {
           user.name = action.payload.name;
           user.email = action.payload.email;
+          user.address.city = action.payload.address;
+          user.username = action.payload.username;
         }
       });
     },

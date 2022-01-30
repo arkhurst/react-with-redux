@@ -26,9 +26,9 @@ function MainComponent() {
         id: nextId,
         name: data.name,
         email: data.email,
-        username: undefined,
+        username: data.username,
         address: {
-          city: undefined,
+          city: data.city,
         },
       })
     );
@@ -121,6 +121,50 @@ function MainComponent() {
                         </p>
                       </>
                     )}
+                  </div>
+                </div>
+                <div className="space-y-1 px-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
+                  <div className="flex flex-col space-y-1">
+                    <label
+                      htmlFor="admin-firstname"
+                      className="block text-sm font-medium text-gray-800  sm:pt-2"
+                    >
+                      Username
+                    </label>
+                  </div>
+                  <div className="sm:col-span-2 space-y-2 h-12">
+                    <input
+                      autoComplete="off"
+                      {...register("username", {
+                        required: false,
+                      })}
+                      type="text"
+                      className={
+                        "appearance-none block bg-white focus:ring-gray-500 focus:border-gray-500  w-full px-3 py-2 border border-gray-300 rounded-md shadow-none placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm"
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="space-y-1 px-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
+                  <div className="flex flex-col space-y-1">
+                    <label
+                      htmlFor="admin-firstname"
+                      className="block text-sm font-medium text-gray-800  sm:pt-2"
+                    >
+                      City
+                    </label>
+                  </div>
+                  <div className="sm:col-span-2 space-y-2 h-12">
+                    <input
+                      autoComplete="off"
+                      {...register("city", {
+                        required: false,
+                      })}
+                      type="text"
+                      className={
+                        "appearance-none block bg-white focus:ring-gray-500 focus:border-gray-500  w-full px-3 py-2 border border-gray-300 rounded-md shadow-none placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm"
+                      }
+                    />
                   </div>
                 </div>
               </div>

@@ -23,10 +23,14 @@ function MainComponent() {
           {" "}
           Dashboard
         </h1>
+
         <div className="bg-white shadow-md  rounded-lg mt-8 pb-1">
           {/* table title and button */}
           <div className="flex flex-row items-center justify-between p-5 border-b border-black">
-            <h2 className="text-base font-medium text-gray-700">User List</h2>
+            <div>
+              <h2 className="text-lg font-medium text-gray-700">User List</h2>
+              {/* <SortMain /> */}
+            </div>
             {userList?.length > 0 && (
               <>
                 <Link
