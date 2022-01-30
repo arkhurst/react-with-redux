@@ -33,8 +33,8 @@ function MainComponent() {
       reset({
         name: user.name,
         email: user.email,
-        city: user.address.city,
-        username: user.username,
+        city: user?.address?.city,
+        username: user?.username,
       });
     }
   }, [dispatch, reset, user, userId]);
@@ -45,8 +45,8 @@ function MainComponent() {
         id: +userId.id,
         name: data.name,
         email: data.email,
-        address: data.city,
-        username: data.username,
+        address: data?.city,
+        username: data?.username,
       })
     );
     toast.success("Record updated successfully");

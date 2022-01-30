@@ -19,11 +19,12 @@ function MainComponent() {
     // reset,
   } = useForm<AddUserFormInput>();
 
+  console.log(userList);
+
   const onSubmit: SubmitHandler<AddUserFormInput> = (data) => {
-    let nextId: number = userList[userList.length - 1].id + 1;
     dispatch(
       addUser({
-        id: nextId,
+        id: userList.length > 0 ? userList[userList?.length - 1].id + 1 : 1,
         name: data.name,
         email: data.email,
         username: data.username,

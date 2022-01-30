@@ -15,10 +15,15 @@ export default function MainComponent({
   onDelete,
   onEdit,
 }: MainComponentProp) {
-  const [list, setList] = React.useState(users);
+  const [list, setList] = React.useState<User[]>([]);
   function handleSortChange(data: User[]) {
     setList(data);
   }
+
+  React.useEffect(() => {
+    setList(users);
+  }, [users]);
+
   return (
     <>
       <SortControl<User>
