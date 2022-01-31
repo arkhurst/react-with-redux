@@ -95,10 +95,14 @@ export function SortControl<T>(props: SortControlProps<T>) {
           <label className="text-xs font-light text-gray-500">Sort by</label>
           {renderSortOptionSelect()}
         </div>
-        <div className="flex flex-col items-start space-y-2">
-          <label className="text-xs font-light text-gray-500">Order</label>
-          {renderSortDirectionIcon()}
-        </div>
+        {sortKey !== "" ? (
+          <>
+            <div className="flex flex-col items-start space-y-2">
+              <label className="text-xs font-light text-gray-500">Order</label>
+              {renderSortDirectionIcon()}
+            </div>
+          </>
+        ) : null}
       </div>
       {/* <span> Order by</span>
        */}

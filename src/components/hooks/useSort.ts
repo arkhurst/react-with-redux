@@ -15,24 +15,25 @@ export function useSort<T>({ data, onSortChange, sortOptions }: SortProps<T>) {
   const initialSortKey = sortOptions[0].value as ItemKey<T>;
   const [sortKey, setSortKey] = React.useState<ItemKey<T>>(initialSortKey);
 
-  // Execute the sort and callback when local state
-  // or supplied props have changed.
-  React.useEffect(() => {
-    // Create a copy before sorting, as the original array is frozen in strict mode.
-    const sortedData = [...data];
-    if (sortedData?.length) {
-      sortedData.sort(compareObjectsByKey(sortKey, sortDirection === "asc"));
+  const handleSort = React.useCallback(
+    (direction = "asc", sortKey) => {
+      const sortedData = [...data];
+      if (sortedData?.length) {
+        sortedData.sort(compareObjectsByKey(sortKey, direction === "asc"));
 
-      if (onSortChange) {
-        onSortChange(sortedData);
+        if (onSortChange) {
+          onSortChange(sortedData);
+        }
       }
-    }
-  }, [data, onSortChange, sortDirection, sortKey]);
+    },
+    [data, onSortChange]
+  );
 
   const handleSortKeyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newSortKey = event.target.value as ItemKey<T>;
     if (sortKey !== newSortKey) {
       setSortKey(newSortKey);
+      handleSort(sortDirection, newSortKey);
     }
   };
 
@@ -47,7 +48,9 @@ export function useSort<T>({ data, onSortChange, sortOptions }: SortProps<T>) {
    * Handle changes to the sort direction.
    */
   const handleDirectionToggle = () => {
-    setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+    const newSortDirection = sortDirection === "asc" ? "desc" : "asc";
+    handleSort(newSortDirection, sortKey);
+    setSortDirection(newSortDirection);
   };
 
   return {

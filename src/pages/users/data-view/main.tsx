@@ -6,6 +6,7 @@ import { MainComponentProp } from "./types";
 import { TableHeader } from "./table-header";
 
 const listSortOptions = [
+  { label: "Select", value: "" },
   { label: "Username", value: "username" },
   { label: "Name", value: "name" },
 ];

@@ -37,15 +37,15 @@ export const UsersData: User[] = [
       city: "South Elvis",
     },
   },
-  // {
-  //   id: 5,
-  //   name: "Chelsey Dietrich",
-  //   username: "Kamren",
-  //   email: "Lucio_Hettinger@annie.ca",
-  //   address: {
-  //     city: "Roscoeview",
-  //   },
-  // },
+  {
+    id: 5,
+    name: "Chelsey Dietrich",
+    username: "Kamren",
+    email: "Lucio_Hettinger@annie.ca",
+    address: {
+      city: "Roscoeview",
+    },
+  },
   // {
   //   id: 6,
   //   name: "Mrs. Dennis Schulist",
